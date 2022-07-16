@@ -1,21 +1,33 @@
-#import requests
-#from bs4 import BeautifulSoup
-
-# Dynamic scraping using automated web browser with selenium.
+# Dynamic scraping using selenium-automated Chrome browser.
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import pandas as pd
+
 
 driver = webdriver.Chrome(executable_path='/Users/myles/desktop/projects/tasting-the-soup/chromedriver')
-driver.get('https://www.youtube.com/c/JordanPetersonVideos/videos?view=0&sort=dd&flow=grid')
+url = 'https://www.youtube.com/c/JordanPetersonVideos/videos?view=0&sort=p&flow=grid'
+driver.get(url)
 
-videos = driver.find_elements(By.CLASS_NAME, 'style-scope ytd-grid-video-renderer')
+placards = driver.find_elements(By.CLASS_NAME, 'style-scope ytd-grid-video-renderer')
 
-for video in videos:
-    title = video.find_element(By.XPATH, './/*[@id="video-title"]').text
-    views = video.find_element(By.XPATH, './/*[@id="metadata-line"]/span[1]').text
-    posted = video.find_element(By.XPATH, './/*[@id="metadata-line"]/span[2]').text
-    length = video.find_element(By.XPATH, './/*[@id="text"]').text
-    print(title, views, posted, length)
+videos = []
+
+for placard in placards:
+    title = placard.find_element(By.XPATH, './/*[@id="video-title"]').text
+    views = placard.find_element(By.XPATH, './/*[@id="metadata-line"]/span[1]').text
+    posted = placard.find_element(By.XPATH, './/*[@id="metadata-line"]/span[2]').text
+    length = placard.find_element(By.XPATH, './/*[@id="text"]').text                           
+
+    video_info = {
+        'Title': title,
+        'Views': views,
+        'Time Posted': posted,
+        'Length': length
+    }
+    videos.append(video_info)
+
+df = pd.DataFrame(videos)
+print(df)
 
 
 
