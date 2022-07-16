@@ -1,19 +1,23 @@
-import requests
-from bs4 import BeautifulSoup
+#import requests
+#from bs4 import BeautifulSoup
+
+# Dynamic scraping using automated web browser with selenium.
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
-url = 'https://safe.density.io/#/displays/dsp_956223069054042646?token=shr_o69HxjQ0BYrY2FPD9HxdirhJYcFDCeRolEd744Uj88e'
-r = requests.get(url)
-soup = BeautifulSoup(r.content, 'lxml')
+driver = webdriver.Chrome(executable_path='/Users/myles/desktop/projects/tasting-the-soup/chromedriver')
+driver.get('https://www.youtube.com/c/JordanPetersonVideos/videos?view=0&sort=dd&flow=grid')
 
-'''
-browser = webdriver.Chrome()
-browser.get('https://safe.density.io/#/displays/dsp_956223069054042646?token=shr_o69HxjQ0BYrY2FPD9HxdirhJYcFDCeRolEd744Uj88e')
-print(browser.title)
-browser.quit()'''
+videos = driver.find_elements(By.CLASS_NAME, 'style-scope ytd-grid-video-renderer')
 
-# alternatively pass in an open(filehandle)
-'''
-with open('index.html') as markup:
-    first_soup = BeautifulSoup(markup, 'lxml')
-'''
+for video in videos:
+    title = video.find_element(By.XPATH, './/*[@id="video-title"]').text
+    views = video.find_element(By.XPATH, './/*[@id="metadata-line"]/span[1]').text
+    posted = video.find_element(By.XPATH, './/*[@id="metadata-line"]/span[2]').text
+    length = video.find_element(By.XPATH, './/*[@id="text"]').text
+    print(title, views, posted, length)
+
+
+
+
+
