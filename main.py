@@ -41,7 +41,7 @@ df = pd.DataFrame(data=all_videos)
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name('service_account.json', scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name('key.json', scope)
 client = gspread.authorize(credentials)
 
 spreadsheet_key = '1sz65hZuFaZomwZrqBmEUzanQtCVj_drUJYkmSNuEqmM'
