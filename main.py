@@ -8,7 +8,7 @@ from df2gspread import df2gspread as d2g
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-## Scraper ##
+## Crawler and Scraper ##
 
 # Start up ChromeDriver.
 driver = webdriver.Chrome(executable_path='/Users/myles/desktop/projects/selenium-scraper/chromedriver')
@@ -39,18 +39,18 @@ df = pd.DataFrame(data=all_videos)
 #print df
 
 
-## Database ##
+## Authentication and Upload ##
 
 # Define APIs being accessed.
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
 # Service account authenticates to APIs via key file.
-credentials = ServiceAccountCredentials.from_json_keyfile_name('key.json', scope)
+key_file = 'key.json'
+credentials = ServiceAccountCredentials.from_json_keyfile_name(key_file, scope)
 client = gspread.authorize(credentials)
 
-# Identify target spreadsheet and worksheet.
-# Sort video category by popular/newest/oldest via YouTube's 'SORT BY' feature.
+# Identify and upload to target spreadsheet and worksheet.
 spreadsheet_key = '1sz65hZuFaZomwZrqBmEUzanQtCVj_drUJYkmSNuEqmM'
 worksheet_name = 'Newest'
 d2g.upload(df, spreadsheet_key, worksheet_name, credentials=credentials, row_names=True)
