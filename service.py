@@ -6,4 +6,4 @@ client = gspread.service_account()
 spreadsheet = client.open('JBP YouTube Data 7/16/22')
 
 #for num in range(2, 32):
-#    print(spreadsheet.sheet1.get('B' +  str(num)))
+#    print(spreadsheet.Newest.get('B' +  str(num)))
