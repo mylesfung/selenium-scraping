@@ -11,7 +11,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 ## Crawler and Scraper ##
 
 # Start up ChromeDriver.
-driver = webdriver.Chrome(executable_path='/Users/myles/desktop/projects/selenium-scraper/chromedriver')
+driver = webdriver.Chrome(executable_path='/Users/myles/desktop/main/selenium-scraping/chromedriver')
 
 # Enter URL from YouTube channel's 'VIDEOS' page.
 URL = 'https://www.youtube.com/c/JordanPetersonVideos/videos?view=0&sort=dd&flow=grid'
