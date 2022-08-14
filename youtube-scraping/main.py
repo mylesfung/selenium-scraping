@@ -7,7 +7,6 @@ import gspread
 from df2gspread import df2gspread as d2g
 from oauth2client.service_account import ServiceAccountCredentials
 
-
 ## Crawler and Scraper ##
 
 # Start up ChromeDriver.
@@ -46,7 +45,7 @@ scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
 # Service account authenticates to APIs via key file.
-key_file = 'key.json'
+key_file = 'secret-key.json'
 credentials = ServiceAccountCredentials.from_json_keyfile_name(key_file, scope)
 client = gspread.authorize(credentials)
 
