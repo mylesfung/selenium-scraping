@@ -45,13 +45,13 @@ df = pd.DataFrame(data=row_data)
 
 SCOPE = [
     #'https://spreadsheets.google.com/feeds',
-    'https://www.googleapis.com/auth/drive'
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive',
     #'https://www.googleapis.com/auth/drive.file'
-    'https://www.googleapis.com/auth/spreadsheets'
 ]
 
 creds = ServiceAccountCredentials.from_json_keyfile_name('secret-key.json', SCOPE)
 client = gspread.authorize(creds)
 
-spreadsheet = client.open_by_key('1x1JomLFPq3CShupUfJW60zzBmispI2-yzIbndF3skVk').Main
+spreadsheet = client.open_by_key('1x1JomLFPq3CShupUfJW60zzBmispI2-yzIbndF3skVk').sheet1
 spreadsheet.append_row([date_time, cap])
