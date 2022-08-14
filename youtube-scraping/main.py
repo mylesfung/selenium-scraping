@@ -7,10 +7,11 @@ import gspread
 from df2gspread import df2gspread as d2g
 from oauth2client.service_account import ServiceAccountCredentials
 
+
 ## Crawler and Scraper ##
 
 # Start up ChromeDriver.
-driver = webdriver.Chrome(executable_path='/Users/myles/desktop/main/selenium-scraping/chromedriver')
+driver = webdriver.Chrome(executable_path='/Users/myles/desktop/main/selenium-scraping/youtube-scraping/chromedriver')
 
 # Enter URL from YouTube channel's 'VIDEOS' page.
 URL = 'https://www.youtube.com/c/JordanPetersonVideos/videos?view=0&sort=dd&flow=grid'
