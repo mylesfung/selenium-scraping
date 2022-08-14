@@ -42,8 +42,10 @@ df = pd.DataFrame(data=all_videos)
 ## Authentication and Upload ##
 
 # Define APIs being accessed.
-scope = ['https://spreadsheets.google.com/feeds',
-         'https://www.googleapis.com/auth/drive']
+scope = [
+    'https://spreadsheets.google.com/feeds',
+    'https://www.googleapis.com/auth/drive'
+]
 
 # Service account authenticates to APIs via key file.
 key_file = 'secret-key.json'
