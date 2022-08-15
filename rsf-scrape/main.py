@@ -21,7 +21,7 @@ def add_row_data():
         driver.get(URL)
         time.sleep(5)
 
-        capacity = driver.find_element(By.XPATH, './/*[@id="root"]/div/div/div[1]/div[2]/div/span').text[0]
+        capacity = driver.find_element(By.XPATH, './/*[@id="root"]/div/div/div[1]/div[2]/div/span').text[0:2]
         date_time = time.ctime()[:4] + time.strftime('%m/%d/%Y %H:%M')
         #date_time = time.ctime()[:16]
         
